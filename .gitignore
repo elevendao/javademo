@@ -1,4 +1,5 @@
 #filter eclipse config files
+.settings
 *.classpath
 *.project
 *.class

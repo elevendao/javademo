@@ -1,5 +1,6 @@
 package com.edao.codes.javase.string;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -8,16 +9,10 @@ import java.util.regex.Pattern;
  */
 public class TestReg {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		String name = "data-config.xml";
-		//boolean b = name.matches("*.xml");
-		//System.out.println(b);
-		
-		boolean b = Pattern.matches("^.+\\.xml$", name);
-		System.out.println(b);
+	public boolean checkSuffix(String name, String suffix) {
+		Pattern p = Pattern.compile("^.+\\."+suffix+"$");
+		Matcher match = p.matcher(name);
+		return match.find();
 	}
 
 }

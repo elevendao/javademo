@@ -114,7 +114,7 @@
   				<artifactId>commons-fileupload</artifactId>
   				<groupId>commons-fileupload</groupId>
   			</exclusion>
-  			<exclusion>
+  			<!-- <exclusion>
   				<artifactId>jcl-over-slf4j</artifactId>
   				<groupId>org.slf4j</groupId>
   			</exclusion>
@@ -129,15 +129,15 @@
   			<exclusion>
   				<artifactId>commons-lang</artifactId>
   				<groupId>commons-lang</groupId>
-  			</exclusion>
-  			<exclusion>
+  			</exclusion> -->
+  			<!-- <exclusion>
   				<artifactId>httpclient</artifactId>
   				<groupId>org.apache.httpcomponents</groupId>
   			</exclusion>
   			<exclusion>
   				<artifactId>httpmime</artifactId>
   				<groupId>org.apache.httpcomponents</groupId>
-  			</exclusion>
+  			</exclusion> -->
   			<exclusion>
   				<artifactId>guava</artifactId>
   				<groupId>com.google.guava</groupId>

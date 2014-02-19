@@ -25,4 +25,11 @@ public class StringTest extends TestCase {
 		assertEquals("from", token[2]);
 		assertEquals(3, token.length);
 	}
+	
+	public void testSubString() {
+		String suffix = "SUSPICIOUS_";
+		String name = "SUSPICIOUS_SELECT_STATUS_RULE";
+		String sub = name.substring(suffix.length());
+		assertEquals("SELECT_STATUS_RULE", sub);
+	}
 }

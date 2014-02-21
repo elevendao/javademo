@@ -1,7 +1,7 @@
 package com.edao.codes.javase.exception;
 
 /**
- * 版权所有：美创科技
+ * 版权所有：liushuai
  * 项目名称:test
  * 创建者: liushuai
  * 创建日期: 2012-9-13

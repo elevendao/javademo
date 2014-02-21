@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * 版权所有：美创科技
+ * 版权所有：liushuai
  * 项目名称:leo
  * 创建者: liushuai
  * 创建日期: 2014-2-18

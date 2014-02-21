@@ -1,7 +1,7 @@
 package com.edao.codes.javase.enumerate;
 
 /**
- * 版权所有：美创科技
+ * 版权所有：liushuai
  * 项目名称:leo
  * 创建者: liushuai
  * 创建日期: 2013-7-29

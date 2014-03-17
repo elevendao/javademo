@@ -40,6 +40,7 @@ public class JdbcTemplate {
 	}
 	
 	public SearchResult groupQuery(PivotQuery pivotQuery) throws SQLException {
+		long ts = System.currentTimeMillis();
 		String[] columns = pivotQuery.getPivots().split(",");
 		String sql = "select " + pivotQuery.getPivots()
 				+ ", count(*) times from mc$audit_session_trail group by "
@@ -64,6 +65,8 @@ public class JdbcTemplate {
 		SearchResult result = new SearchResult();
 		result.setItems(results);
 		result.setTotalCount(groupCount);
+		long te = System.currentTimeMillis();
+		System.out.println("querytime="+(te-ts));
 		return result;
 	}
 	

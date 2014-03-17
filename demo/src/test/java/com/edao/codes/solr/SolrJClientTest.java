@@ -22,7 +22,7 @@ import com.edao.codes.beans.GroupResult;
 public class SolrJClientTest extends TestCase {
 	
 	public void testPivotQuery() {
-		String url = "http://172.16.4.121:8983/solr/1";
+		String url = "http://172.16.4.118:8983/solr/1";
 		//String url = "http://172.16.6.115:8983/solr/0";
 		//String url = "http://172.16.6.115:8983/solr/access_201402";
 		//String url = "http://172.16.4.121:8983/solr/1";
@@ -40,10 +40,10 @@ public class SolrJClientTest extends TestCase {
 		query.setPivots("ip_address,cmdtype");
 		query.setPivots("ip_address,cmdtype,appname");
 		query.setPivots("ip_address,cmdtype,appname,host");
-		//query.setPivots("ip_address,cmdtype,appname,host,dbuser");
+		query.setPivots("ip_address,cmdtype,appname,host,dbuser");
 		query.setPivots("ip_address,cmdtype,appname,host,dbuser,rule_name"); // oom
 		query.setPivots("cmdtype,appname,host,dbuser,rule_name");  // oom
-		//query.setPivots("rule_name,host,dbuser,dbname,cmdtype,object_owner,object_name,object_type,os_user");
+		query.setPivots("rule_name,host,dbuser,dbname,cmdtype,object_owner,object_name,object_type,os_user");
 		SearchResult result = client.pivotQuery(query);
 		List<GroupResult> items = result.getItems();
 		int total = result.getTotalCount();

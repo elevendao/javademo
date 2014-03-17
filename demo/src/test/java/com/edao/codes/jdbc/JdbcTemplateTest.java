@@ -57,8 +57,9 @@ public class JdbcTemplateTest {
 		//query.setPivots("ip_address,appname,cmdtype,rule_name,dbuser");
 		//query.setPivots("ip_address,appname,cmdtype,rule_name,dbuser,host");
 		//query.setPivots("ip_address,appname,cmdtype,rule_name,dbuser,host,mac_address");
-		//query.setPivots("host,cmdtype");
-		query.setPivots("host,mac_address,cmdtype");
+		query.setPivots("host,cmdtype");
+		query.setPivots("host,mac_address");
+		//query.setPivots("host,mac_address,cmdtype");
 		
 		JdbcTemplate t = new JdbcTemplate();
 		SearchResult result1 = null;
@@ -77,21 +78,23 @@ public class JdbcTemplateTest {
 		}
 		System.out.println("total1 : " + result1.getTotalCount());
 //		
-//		String url = "http://172.16.4.121:8983/solr/0";
-//		SolrJClient client = new SolrJClient(url);
-//		SearchResult result2 = client.pivotQuery(query);
-//		List<GroupResult> items2 = result2.getItems();
-//		int gtotal2 = 0;
-//		for (int i=0; i<items2.size(); i++) {
-//			GroupResult gr = items2.get(i);
-//			gtotal2 += gr.getCount();
-//			System.out.println(i + ", " + gr);
-//		}
-//		
-//		System.out.println("total1 : " + result2.getTotalCount());
-//		for (int i = 0; i < items1.size(); i++){
-//			assertEquals(items1.get(i), items2.get(i));
-//		}
+		String url = "http://172.16.4.118:8983/solr/0";
+		SolrJClient client = new SolrJClient(url);
+		SearchResult result2 = client.pivotQuery(query);
+		List<GroupResult> items2 = result2.getItems();
+		int gtotal2 = 0;
+		for (int i=0; i<items2.size(); i++) {
+			GroupResult gr = items2.get(i);
+			gtotal2 += gr.getCount();
+			System.out.println(i + ", \t" + gr);
+		}
+		
+		System.out.println("gtotal=" + gtotal);
+		System.out.println("gtotal2=" + gtotal2);
+		System.out.println("total1 : " + result2.getTotalCount());
+		for (int i = 0; i < items1.size(); i++){
+			assertEquals(items1.get(i), items2.get(i));
+		}
 	}
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="filecomment_context" deleted="false" description="Comment for created Java files" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.filecomment" name="filecomment">/**
+ * 版权所有：liushuai
+ * 项目名称:${project_name}
+ * 创建者: ${user}
+ * 创建日期: ${date}
+ * 文件说明:
+ * 最近修改者：${user}
+ * 最近修改日期：${date}
+ */</template></templates>

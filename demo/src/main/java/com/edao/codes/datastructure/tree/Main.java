@@ -11,11 +11,12 @@ import java.util.Map;
  */
 public class Main {
 	public static void main(String[] args) {
-		int count = 10;
+		/*int count = 10;
 		int[] arr = new int[count];
 		for (int i=0; i<count; i++) {
 			arr[i] = (int) (Math.random() * 1000);
-		}
+		}*/
+		int[] arr = {5, 3, 2, 4, 8, 7, 9};
 		
 		Tree tree = new Tree(arr);
 		tree.traverse();
@@ -24,9 +25,9 @@ public class Main {
 //		table.put("s", "sss");
 //		System.out.println(table.get(null));
 		
-		HashMap map = new HashMap();
+		/*HashMap map = new HashMap();
 		map.put("ss", "sss");
 		map.put(null, "bbbbbbb");
-		System.out.println(map.get(null));
+		System.out.println(map.get(null));*/
 	}
 }

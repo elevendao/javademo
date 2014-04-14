@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<!-- 添加struts请求处理的ActionServlet配置 通过此配置解析struts-config.xml文件 -->
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+		<!-- 初始化配置文件 -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<!-- init-param>
+			<param-name>config/rights</param-name>
+			<param-value>/WEB-INF/rights-struts-config.xml</param-value>
+		</init-param-->
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<!-- 当启动服务器时 加载此配置 -->
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<!-- 配置struts请求处理的URL方式 默认是后缀为.do的请求 -->
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

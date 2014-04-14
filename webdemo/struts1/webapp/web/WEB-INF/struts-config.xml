@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts    
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">   
+<struts-config>
+ 
+    <!-- formbean的映射的配置 -->
+    <form-beans>
+    <!--name指明ActionForm的名称 此名称与action中相应处理的Action中的name一致type指明ActionForm处理的类 -->   
+    <form-bean name="userForm" type="action.actionform.UserForm"></form-bean>
+    </form-beans>
+    
+    <!-- 映射全局的异常处理配置 -->   
+    <global-exceptions />
+    <!-- 映射全局的跳转处理配置 -->   
+    <global-forwards >
+    </global-forwards>   
+    <!-- action的映射的配置 -->
+    <action-mappings>
+    <!--path指明请求的URL地址,type指明此action处理的Action类型 name指明的是请求参数封装的ActionForm的名称 -->  
+    <!-- path前的/是表示当前应用的路径 -->
+    <action path="/registerform" forward="/WEB-INF/jsp/register.jsp" />
+    <action path="/register" type="action.RegisterAction" name="userForm">
+    	<forward name="message" path="/WEB-INF/jsp/message.jsp"></forward>
+    </action>
+    </action-mappings>
+    <!-- 映射资源文件
+    <message-resources parameter="com.yourcompany.struts.ApplicationResources" />
+    -->    
+</struts-config>

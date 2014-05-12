@@ -1,0 +1,15 @@
+div.jqmdTC {
+    background: url("../images/box/bg_cen.gif") repeat-x scroll 0 -82px #D5FF84;
+    color: #528C00;
+    font-family: "sans serif",verdana,tahoma,helvetica;
+    font-weight: bold;
+    padding: 7px 22px 5px 5px;
+}
+div.jqmdTL {
+    background: url("../images/box/bg_le.gif") no-repeat scroll 0 -41px transparent;
+    padding-left: 3px;
+}
+div.jqmdTR {
+    background: url("../images/box/bg_rit.gif") no-repeat scroll right 0 transparent;
+    padding-right: 3px;
+}

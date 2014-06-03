@@ -246,7 +246,12 @@ public class SolrHttpNew {
 		try {
 			String dataSource = param.getDataSource();
 			auditDs = solrConfig.getAuditDataSource(dataSource);
-			solrServer = auditDs.getSolrCore(param.getSolrCoreName()).getHttpSolrServer();
+			if (DataSource.ACCESS.toString().equals(param.getDataSource())) {
+				solrServer = auditDs.getSolrCore(param.getSolrCoreName()).getHttpSolrServer();
+			} else {
+				solrServer = auditDs.getHttpSolrServer();
+			}
+			
 			rsp = query(query);
 		} catch (SolrServerException e) {
 			e.printStackTrace();
@@ -265,7 +270,11 @@ public class SolrHttpNew {
 		try {
 			String dataSource = param.getDataSource();
 			auditDs = solrConfig.getAuditDataSource(dataSource);
-			solrServer = auditDs.getSolrCore(param.getSolrCoreName()).getHttpSolrServer();
+			if (DataSource.ACCESS.toString().equals(param.getDataSource())) {
+				solrServer = auditDs.getSolrCore(param.getSolrCoreName()).getHttpSolrServer();
+			} else {
+				solrServer = auditDs.getHttpSolrServer();
+			}
 			rsp = query(query);
 		} catch (SolrServerException e) {
 			e.printStackTrace();

@@ -9,18 +9,15 @@
  */
 package com.edao.codes.solr;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.edao.codes.beans.NewGroupResult;
-import com.edao.codes.solr.SolrJClient.GroupList;
+import com.edao.codes.beans.GroupResult;
 import com.edao.codes.solr.constant.DataSource;
 import com.edao.codes.solr.constant.QueryType;
-import com.edao.codes.solr.impl.AuditDataSource;
 import com.edao.codes.solr.impl.PivotFields;
 import com.edao.codes.solr.impl.Query;
 import com.edao.codes.solr.impl.SearchParam;
-import com.edao.codes.solr.impl.SolrConfig;
+import com.edao.codes.solr.impl.SearchResult;
 
 /**
  * @author liushuai
@@ -41,27 +38,36 @@ public class Main {
 	
 	public void testPivot() {
 		SolrJClient client = new SolrJClient();
-		SearchParam param = new SearchParam(DataSource.ACCESS);
-		DataSource ds = DataSource.ACCESS;
+		DataSource ds = DataSource.LOGON;
+		ds = DataSource.ACCESS;
+		SearchParam param = new SearchParam(ds);
 		String q = "*:*";
 		String lgAdditon = "*:*";
 		String fields = "dbuser,host,instance_name,dbname,appname,ip_address,action_level";
-		fields = "appuser,host";
+//		fields = "appuser,host";
+//		fields = "rule_name";
+//		fields = "action_level";
 		PivotFields pfields = new PivotFields(ds, fields);
 		Query query = new Query(false, QueryType.ADVANCED, q, lgAdditon);
 		param.setQuery(query);
 		param.setPivotFields(pfields);
-		GroupList glist = null;
-		glist = client.groupAccess(param);
-		List<NewGroupResult<String, Object>> groups = glist.getGroups();
-		showGroups(groups);
+		SearchResult<GroupResult> result = client.group(param);
+		List<GroupResult> groups = result.getItems();
+		if (groups != null) {
+			showGroups(groups);
+			System.out.println("record count=" + result.getTotalCount());
+		} else {
+			System.out.println("groups is null.");
+		}
 	}
 	
-	private void showGroups(List<NewGroupResult<String, Object>> groups) {
+	private void showGroups(List<GroupResult> groups) {
 		for (int i=0; i<groups.size(); i++) {
-			NewGroupResult<String, Object> g = groups.get(i);
+			GroupResult g = groups.get(i);
 			System.out.println(i + ", \t" + g);
 		}
+		System.out.println("group count=" + groups.size());
+		
 	}
 	
 }

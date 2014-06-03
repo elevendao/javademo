@@ -9,50 +9,83 @@
  */
 package com.edao.codes.beans;
 
+import java.util.HashMap;
+
 /**
  * @author liushuai
+ * @param <T>
  *
  */
 public class GroupResult {
-	String group;
 	int count;
+	HashMap<String, Object> vals;
+
+	public GroupResult() {
+		super();
+		vals = new HashMap<String, Object>();
+	}
 	
-	public GroupResult(String group, int count) {
-		this.group = group;
-		this.count = count;
+	public void put(String key, Object value) {
+		vals.put(key, value);
 	}
 	
-	public String toString() {
-		return "count: " + count + "\t group: " + group;
+	public Object get(String key) {
+		return vals.get(key);
 	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof GroupResult) {
-			GroupResult other = (GroupResult) obj;
-			return this.group.equals(other.group) && this.count == other.count;
-		}
-		return false;
-	}
-
-	public String getGroup() {
-		return group;
-	}
-
-	public void setGroup(String group) {
-		this.group = group;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
+	
 	public void setCount(int count) {
 		this.count = count;
 	}
+	
+	public int getCount() {
+		return this.count;
+	}
+	
+	public String toString() {
+		return "count=" + count + "," + vals.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public GroupResult clone() {
+		GroupResult clone = new GroupResult();
+		clone.setCount(count);
+		clone.vals = (HashMap<String, Object>) this.vals.clone();
+		return clone;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return vals.hashCode();
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if (obj instanceof GroupResult) {
+			GroupResult o = (GroupResult) obj;
+			return this.vals.equals(o.vals);
+		}
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		GroupResult r = new GroupResult();
+		r.put("sessid", 1224234);
+		r.put("cmdtype", "sdfs");
+		r.setCount(4);
+		System.out.println(r);
+		
+		GroupResult clone = (GroupResult) r.clone();
+		clone.setCount(6);
+//		clone.put("cmdtype", "select");
+		System.out.println(clone);
+		
+		System.out.println(clone.equals(r));
+	}
+	
 }
